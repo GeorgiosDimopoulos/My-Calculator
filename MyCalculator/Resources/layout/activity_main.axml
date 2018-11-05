@@ -2,13 +2,14 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="match_parent"	
     android:layout_height="match_parent">
 	<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"		
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"	
 	android:orientation="vertical"
+	android:background="#CFD8DC"
 	android:padding="30px"
 	android:gravity="center"
 	android:layout_height="match_parent">
@@ -19,19 +20,19 @@
 		android:textStyle="bold"
 		android:textSize="50px"
 		android:padding="20px"
-		android:textColor="#090909"/>
+		android:textColor="#212121"/>
 	<GridLayout
 		android:layout_width="match_parent"
 		android:layout_gravity="center"
 		android:paddingBottom="20px"
 		android:layout_height="wrap_content"
-		android:background="#e9e9e9">
+		android:background="#455A64">
 		<TextView
 			android:layout_width="wrap_content"	
 			android:layout_gravity="center"		
 			android:textSize="100px"
 			android:id="@+id/textviewResult"
-			android:textColor="#000000"		
+			android:textColor="#fff"		
 			android:layout_height="wrap_content"/>
 	</GridLayout>	
 	<GridLayout

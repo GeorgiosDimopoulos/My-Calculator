@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using Android.App;
+using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -25,7 +27,7 @@ namespace MyCalculator
         
         private TextView _resultTextview;
         private double _result;
-        private bool _cleared, _comma;
+        private bool _cleared, _comma, _afterComma;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,6 +35,7 @@ namespace MyCalculator
             {
                 _cleared = true;
                 _comma = false;
+                _afterComma = false;
                 base.OnCreate(savedInstanceState);
                 SetContentView(Resource.Layout.activity_main);
                 _result = 0;
@@ -61,14 +64,36 @@ namespace MyCalculator
                 Button _logButton = FindViewById<Button>(Resource.Id.buttonLog);
                 Button _rootButton = FindViewById<Button>(Resource.Id.buttonRoot);
                 Button _equalButton = FindViewById<Button>(Resource.Id.buttonEqual);
+                
+                Typeface tf = Typeface.CreateFromAsset(Application.Context.Assets, "Roboto-Light.ttf");
+                _clearButton.Typeface = tf;
+                _equalButton.Typeface = tf;
+                _rootButton.Typeface = tf;
+                _mulButton.Typeface = tf;
+                _percentButton.Typeface = tf;
+                _minusButton.Typeface = tf;
+                _plusButton.Typeface = tf;
+                _nineButton.Typeface = tf;
+                _eightButton.Typeface = tf;
+                _fiveButton.Typeface = tf;
+                _sixButton.Typeface = tf;
+                _fourButton.Typeface = tf;
+                _threeButton.Typeface = tf;
+                _buttonComma.Typeface = tf;
+                _zerobutton.Typeface = tf;
+                _buttontwo.Typeface = tf;
+                _oneButton.Typeface = tf;
+                _sevenButton.Typeface = tf;
+                _resultTextview.Typeface = tf;
 
                 _buttonComma.Click += delegate
                 {
                     if (_cleared)
                     {
-                        _resultTextview.Text += ".";
+                        _resultTextview.Text += ","; //.
                         _comma = true;
                         _cleared = false;
+                        //_result = double.Parse(_resultTextview.Text);
                     }
                     else Toast.MakeText(this, "ΑΔΥΝΑΤΟ", ToastLength.Long).Show();
 
@@ -95,9 +120,9 @@ namespace MyCalculator
                 };
                 _logButton.Click += delegate
                 {
-                    //
                     choice = Operation.Log;
-                    _resultTextview.Text = "";
+                    var temp=_resultTextview.Text;
+                    _resultTextview.Text = Math.Log10(double.Parse(temp)).ToString(CultureInfo.InvariantCulture);
                     _cleared = true;
                 };
                 _minusButton.Click += delegate
@@ -159,6 +184,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "8";
                 };
                 _nineButton.Click += delegate
@@ -167,6 +194,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "9";
                 };
                 _sevenButton.Click += delegate
@@ -175,6 +204,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "7";
                 };
                 _fiveButton.Click += delegate
@@ -183,6 +214,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "5";
                 };
                 _buttontwo.Click += delegate
@@ -191,6 +224,7 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
                     _resultTextview.Text += "2";
                 };
                 _zerobutton.Click += delegate
@@ -199,6 +233,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "0";
                 };
                 _oneButton.Click += delegate
@@ -207,6 +243,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "1";
                 };
                 _threeButton.Click += delegate
@@ -215,6 +253,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "3";
                 };
                 _fourButton.Click += delegate
@@ -223,6 +263,8 @@ namespace MyCalculator
                     {
                         _resultTextview.Text = "";
                     }
+                    _comma = false;
+                    _afterComma = true;
                     _resultTextview.Text += "4";
                 };
                 _sixButton.Click += delegate
@@ -232,6 +274,8 @@ namespace MyCalculator
                         _resultTextview.Text = "";
                     }
                     _resultTextview.Text += "6";
+                    _comma = false;
+                    _afterComma = true;
                 };
             }
             catch (Exception e)
