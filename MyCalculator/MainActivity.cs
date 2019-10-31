@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace MyCalculator
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Icon ="@drawable/calculator", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
         enum Operation
